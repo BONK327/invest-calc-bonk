@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Инвестиционный калькулятор</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Инвестиционный калькулятор</h1>
+    <p class="subtitle">Сложный процент с ежемесячной капитализацией и пополнениями</p>
+
+    <form id="calc-form" class="card" novalidate>
+      <label>
+        Начальная сумма, ₽
+        <input type="number" id="initial" min="0" step="any" value="100000" required>
+      </label>
+      <label>
+        Ежемесячное пополнение, ₽
+        <input type="number" id="monthly" min="0" step="any" value="10000" required>
+      </label>
+      <label>
+        Годовая ставка, %
+        <input type="number" id="rate" min="0" max="100" step="any" value="12" required>
+      </label>
+      <label>
+        Срок, лет
+        <input type="number" id="years" min="1" max="50" step="1" value="10" required>
+      </label>
+      <button type="submit">Рассчитать</button>
+      <p id="error" class="error" hidden></p>
+    </form>
+
+    <section id="results" hidden>
+      <div class="summary">
+        <div class="card stat">
+          <span class="stat-label">Итоговая сумма</span>
+          <span class="stat-value" id="final-amount"></span>
+        </div>
+        <div class="card stat">
+          <span class="stat-label">Внесено всего</span>
+          <span class="stat-value" id="total-contributed"></span>
+        </div>
+        <div class="card stat">
+          <span class="stat-label">Чистый доход</span>
+          <span class="stat-value accent" id="net-income"></span>
+        </div>
+      </div>
+
+      <div class="card table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Год</th>
+              <th>Внесено</th>
+              <th>Доход за год</th>
+              <th>Доход накопленный</th>
+              <th>Баланс</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
